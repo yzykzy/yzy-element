@@ -1,4 +1,4 @@
-import { ErButton } from '@yzy-element/components';
+import { ErButton, ErIcon, ErButtonGroup } from '@yzy-element/components';
 import type { Plugin } from 'vue';
 
-export default [ErButton] as Plugin[];
+export default [ErButton, ErIcon, ErButtonGroup] as Plugin[];
