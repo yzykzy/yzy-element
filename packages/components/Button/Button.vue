@@ -32,7 +32,10 @@ const type = computed(() => ctx?.type ?? props?.type ?? "");
 const disabled = computed(() => ctx?.disabled || props?.disabled || false);
 
 defineExpose<ButtonInstance>({
-  ref: _ref
+  ref: _ref,
+  size: size,
+  disabled: disabled,
+  type: type
 })
 
 </script>

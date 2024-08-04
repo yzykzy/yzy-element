@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <er-button>1111</er-button>
+  <er-button type="primary">按钮</er-button>
 </template>
 
 <style scoped></style>
