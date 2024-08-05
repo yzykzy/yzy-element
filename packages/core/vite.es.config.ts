@@ -44,17 +44,11 @@ export default defineConfig({
   }),
   terser({
     compress: {
-      // ；保持
       sequences: isProd,
-      // 参数重命名
       arguments: isProd,
-      // console.log删除
       drop_console: isProd && ["log"],
-      // debugger删除
       drop_debugger: isProd,
-      // 压缩次数
       passes: isProd ? 4 : 1,
-
       global_defs: {
         "@DEV": JSON.stringify(isDev),
         "@PROD": JSON.stringify(isProd),
@@ -74,7 +68,7 @@ export default defineConfig({
       keep_classnames: isDev,
       keep_fnames: isDev,
     },
-  })
+  }) as Plugin,
   ],
   build: {
     outDir: 'dist/es',
