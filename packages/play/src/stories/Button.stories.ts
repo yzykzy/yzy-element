@@ -2,7 +2,7 @@ import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
 import { fn, within, userEvent, expect } from '@storybook/test';
 import { set } from "lodash-es";
 import { ErButton, ErButtonGroup } from 'yzy-element';
-
+import 'yzy-element/dist/theme/Button.css'
 type Story = StoryObj<typeof ErButton> & { argTypes: ArgTypes };
 const meta: Meta<typeof ErButton> = {
   title: "Example/Button",
