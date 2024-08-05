@@ -1,28 +1,17 @@
 <script setup lang="ts">
-import type { CollapseProps, CollapseEmits, CollapseItemName } from './types';
-import { ref, watch, provide, watchEffect } from 'vue';
-import { debugWarn } from '@yzy-element/utils';
-import { COLLAPSE_CTX_KEY } from './constants';
+import type { CollapseProps, CollapseEmits, CollapseItemName } from "./types";
+import { ref, provide, watch, watchEffect } from "vue";
+import { debugWarn } from "@yzy-element/utils";
+import { COLLAPSE_CTX_KEY } from "./constants";
 
-const COMP_NAME = 'ErCollapse' as const
+const COMP_NAME = "ErCollapse" as const;
 
 defineOptions({
-  name: 'ErCollapse'
-})
-
+  name: COMP_NAME,
+});
 const props = defineProps<CollapseProps>();
-
-const emits = defineEmits<CollapseEmits>()
-
+const emits = defineEmits<CollapseEmits>();
 const activeNames = ref(props.modelValue);
-
-
-
-watchEffect(() => {
-  if (props.accordion && activeNames.value.length > 1) {
-    debugWarn(COMP_NAME, 'accordion mode should only have one active item')
-  }
-})
 
 function handleItemClick(item: CollapseItemName) {
   let _activeNames = [...activeNames.value];
@@ -30,33 +19,39 @@ function handleItemClick(item: CollapseItemName) {
   if (props.accordion) {
     _activeNames = [_activeNames[0] === item ? "" : item];
     updateActiveNames(_activeNames);
-    return
+    return;
   }
 
   const index = _activeNames.indexOf(item);
-  if (index < -1) {
+  if (index > -1) {
     _activeNames.splice(index, 1);
   } else {
     _activeNames.push(item);
   }
   updateActiveNames(_activeNames);
-
 }
-
 
 function updateActiveNames(newNames: CollapseItemName[]) {
   activeNames.value = newNames;
   emits("update:modelValue", newNames);
-  emits('change', newNames);
+  emits("change", newNames);
 }
 
+watchEffect(() => {
+  if (props.accordion && activeNames.value.length > 1) {
+    debugWarn(COMP_NAME, "accordion mode should only have one active item");
+  }
+});
 
-watch(() => props.modelValue, (newNames) => updateActiveNames(newNames))
+watch(
+  () => props.modelValue,
+  (newNames) => updateActiveNames(newNames)
+);
 
 provide(COLLAPSE_CTX_KEY, {
   activeNames,
-  handleItemClick
-})
+  handleItemClick,
+});
 </script>
 
 <template>
@@ -65,7 +60,6 @@ provide(COLLAPSE_CTX_KEY, {
   </div>
 </template>
 
-
 <style scoped>
-@import './style.css';
+@import "./style.css";
 </style>

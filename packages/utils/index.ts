@@ -1,10 +1,11 @@
 export const typeIconMap = new Map([
   ["info", "circle-info"],
   ["success", "check-circle"],
-  ["warning", "circle-exxclamation"],
+  ["warning", "circle-exclamation"],
   ["danger", "circle-xmark"],
-  ["error", "circle-xmark"]
-])
+  ["error", "circle-xmark"],
+]);
+
 
 
 

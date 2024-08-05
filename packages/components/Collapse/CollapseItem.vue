@@ -1,23 +1,17 @@
 <script setup lang="ts">
-import { inject, computed } from 'vue'
-import type { CollapseItemProps } from './types';
-import { COLLAPSE_CTX_KEY } from './constants';
-import ErIcon from '../Icon/Icon.vue';
-import transitionEvents from './transitionEvents.ts'
-defineOptions({
-  name: 'ErCollapseItem'
-})
+import type { CollapseItemProps } from "./types";
+import { inject, computed } from "vue";
+import { COLLAPSE_CTX_KEY } from "./constants";
+import ErIcon from "../Icon/Icon.vue";
+import transitionEvents from "./transitionEvents";
 
+defineOptions({ name: "ErCollapseItem" });
 const props = defineProps<CollapseItemProps>();
 const ctx = inject(COLLAPSE_CTX_KEY, void 0);
-const isActive = computed(() => {
-  return ctx?.activeNames.value?.includes(props.name)
-});
+const isActive = computed(() => ctx?.activeNames.value?.includes(props.name));
 
 function handleClick() {
-  if (props.disabled) {
-    return
-  }
+  if (props.disabled) return;
   ctx?.handleItemClick(props.name);
 }
 </script>
@@ -48,5 +42,5 @@ function handleClick() {
 </template>
 
 <style scoped>
-@import './style.css';
+@import "./style.css";
 </style>

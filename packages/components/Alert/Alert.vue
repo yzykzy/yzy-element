@@ -1,44 +1,42 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import type { AlertEmits, AlertInstance, AlertProps } from './types'
-import { typeIconMap } from '@yzy-element/utils';
+import type { AlertProps, AlertEmits, AlertInstance } from "./types";
+import { typeIconMap } from "@yzy-element/utils";
+import { computed, ref } from "vue";
+
+import ErIcon from "../Icon/Icon.vue";
 
 defineOptions({
-  name: 'ErAlert'
+  name: "ErAlert",
 });
 
 const props = withDefaults(defineProps<AlertProps>(), {
-  effect: 'light',
-  type: 'info',
-  closable: true
+  effect: "light",
+  type: "info",
+  closable: true,
 });
 
 const emits = defineEmits<AlertEmits>();
-
 const slots = defineSlots();
 
+const visible = ref(true);
 
-const visible = ref(false);
+const iconName = computed(() => typeIconMap.get(props.type) ?? "circle-info");
+const withDescription = computed(() => props.description || slots.default);
 
-const iconName = computed(() => typeIconMap.get(props.type) ?? 'circle-info')
-const withDescription = computed(() => props.description || slots.default)
 function close() {
   visible.value = false;
-  emits('close');
+  emits("close");
 }
 
 function open() {
   visible.value = true;
 }
 
-defineExpose({
+defineExpose<AlertInstance>({
   close,
-  open
-})
-
+  open,
+});
 </script>
-
-
 
 <template>
   <transition name="er-alert-fade">
@@ -63,8 +61,6 @@ defineExpose({
     </div>
   </transition>
 </template>
-
-
 
 <style scoped>
 @import './style.css';
