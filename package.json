@@ -8,8 +8,12 @@
     "story": "pnpm --filter @yzy-element/play storybook",
     "docs:dev": "pnpm --filter @yzy-element/docs dev",
     "docs:build": "pnpm --filter @yzy-element/docs build",
-    "test": "cross-env NODE_ENV=test pnpm --filter @yzy-element/components test",
-    "build": "cross-env NODE_ENV=production pnpm --filter yzy-element build",
+    "test": "run-p test-utils test-comp",
+    "test-comp": "cross-env NODE_ENV=test pnpm --filter @yzy-element/components test",
+    "test-utils": "cross-env NODE_ENV=test pnpm --filter @yzy-element/utils test",
+    "build": "run-s build-hooks build-comp",
+    "build-comp": "cross-env NODE_ENV=production pnpm --filter yzy-element build",
+    "build-hooks": "cross-env NODE_ENV=production pnpm --filter @yzy-element/hooks build",
     "build:dev": "cross-env NODE_ENV=development pnpm --filter yzy-element build:watch"
   },
   "keywords": [],
@@ -40,13 +44,18 @@
     "shelljs": "^0.8.5",
     "typescript": "5.2.2",
     "vite": "5.1.4",
+    "vite-plugin-dts": "^3.9.1",
     "vitest": "1.4.0",
     "vue-tsc": "1.8.27"
   },
   "dependencies": {
+    "@vitest/coverage-v8": "1.4.0",
+    "@vue/test-utils": "2.4.5",
     "@yzy-element/hooks": "workspace:*",
     "@yzy-element/theme": "workspace:*",
     "@yzy-element/utils": "workspace:*",
+    "@yzy-element/vite-plugins": "workspace:*",
+    "jsdom": "24.0.0",
     "lodash-es": "4.17.21",
     "vue": "3.4.19",
     "yzy-element": "workspace:*"

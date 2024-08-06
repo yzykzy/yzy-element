@@ -3,7 +3,7 @@ import type { AlertType } from './types'
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { withInstall } from '@yzy-element/utils'
-import { ErAlert } from './index'
+import { ErAlert } from './index.ts'
 
 import Alert from './Alert.vue'
 import ErIcon from '../Icon/Icon.vue'

@@ -20,5 +20,5 @@ export default defineConfig({
       }
     }
   },
-  plugins: [vue(), dts({ insertTypesEntry: true })]
+  plugins: [vue(), dts({ insertTypesEntry: true }) as Plugin]
 })

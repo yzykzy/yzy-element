@@ -2,7 +2,7 @@ import type { StoryObj, Meta, ArgTypes } from "@storybook/vue3";
 import { ref, watch } from "vue";
 import { fn } from "@storybook/test";
 import { ErAlert, type AlertInstance } from "yzy-element";
-import "toy-element/dist/theme/Alert.css";
+import "yzy-element/dist/theme/Alert.css";
 
 type Story = StoryObj<typeof ErAlert> & { argTypes?: ArgTypes };
 

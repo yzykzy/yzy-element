@@ -5,7 +5,7 @@ import dts from 'vite-plugin-dts';
 import { readdirSync } from 'fs';
 import { filter, map, delay } from 'lodash-es';
 import shell from 'shelljs';
-import hooks from './hooksPlugin';
+import { hooksPlugin as hooks } from '@yzy-element/vite-plugins'
 import terser from '@rollup/plugin-terser';
 const TRY_MOVE_STYLES_DELAY = 800 as const;
 
@@ -89,7 +89,7 @@ export default defineConfig({
     //   }
     // },
     lib: {
-      entry: resolve(__dirname, "./index.ts"),
+      entry: resolve(__dirname, "../index.ts"),
       name: 'YzyElement',
       fileName: "index",
       formats: ["es"],

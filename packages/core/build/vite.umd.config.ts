@@ -5,7 +5,7 @@ import { resolve } from 'path';
 import { readFileSync } from 'fs'
 import shell from 'shelljs';
 import { delay } from 'lodash-es';
-import hooks from './hooksPlugin';
+import { hooksPlugin as hooks } from '@yzy-element/vite-plugins'
 import terser from '@rollup/plugin-terser';
 
 const TRY_MOVE_STYLES_DELAY = 800 as const;
@@ -38,14 +38,14 @@ export default defineConfig({
         "@TEST": JSON.stringify(isTest),
       },
     },
-  }), hooks({
+  }) as Plugin, hooks({
     rmFiles: ['./dist/umd', './dist/index.css'],
     afterBuild: moveStyles
   })],
   build: {
     outDir: 'dist/umd',
     lib: {
-      entry: resolve(__dirname, "./index.ts"),
+      entry: resolve(__dirname, "../index.ts"),
       name: 'YzyElement',
       fileName: "index",
       formats: ["umd"],
