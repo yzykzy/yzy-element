@@ -46,7 +46,8 @@
     "vite": "5.1.4",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "1.4.0",
-    "vue-tsc": "1.8.27"
+    "vue-tsc": "1.8.27",
+    "vue3-i18n": "^1.1.5"
   },
   "dependencies": {
     "@vitest/coverage-v8": "1.4.0",
@@ -55,6 +56,7 @@
     "@yzy-element/theme": "workspace:*",
     "@yzy-element/utils": "workspace:*",
     "@yzy-element/vite-plugins": "workspace:*",
+    "@yzy-element/locale": "workspace:*",
     "jsdom": "24.0.0",
     "lodash-es": "4.17.21",
     "vue": "3.4.19",

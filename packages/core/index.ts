@@ -1,4 +1,4 @@
-import { makeInstaller } from '@yzy-element/utils';
+import { makeInstaller } from './makeInstaller';
 import components from './components';
 import '@yzy-element/theme/index.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -12,4 +12,5 @@ library.add(fas);
 const installer = makeInstaller(components);
 
 export * from '@yzy-element/components';
+export * from '@yzy-element/locale';
 export default installer;

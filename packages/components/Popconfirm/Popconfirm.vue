@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { addUnit } from "@yzy-element/utils";
-// import { useLocale } from "@yzy-element/hooks";
+import { useLocale } from "@yzy-element/hooks";
 import type { TooltipInstance } from "../Tooltip";
 import type { PopconfirmProps, PopconfirmEmits } from "./types";
 
@@ -26,7 +26,7 @@ const emits = defineEmits<PopconfirmEmits>();
 const tooltipRef = ref<TooltipInstance>();
 const style = computed(() => ({ width: addUnit(props.width) }));
 
-// const locale = useLocale();
+const locale = useLocale();
 
 function hidePopper() {
   tooltipRef.value?.hide();
@@ -53,12 +53,12 @@ function cancel(e: MouseEvent) {
         </div>
         <div class="er-popconfirm__action">
           <er-button class="er-popconfirm__cancel" size="small" :type="cancelButtonType" @click="cancel">
-            <!-- {{ cancelButtonText || locale.t("popconfirm.cancelButtonText") }} -->
-            {{ cancelButtonText }}
+            {{ cancelButtonText || locale.t("popconfirm.cancelButtonText") }}
+
           </er-button>
           <er-button class="er-popconfirm__confirm" size="small" :type="confirmButtonType" @click="confrim">
-            <!-- {{ confirmButtonText || locale.t("popconfirm.confirmButtonText") }} -->
-            {{ confirmButtonText }}
+            {{ confirmButtonText || locale.t("popconfirm.confirmButtonText") }}
+
           </er-button>
         </div>
       </div>
