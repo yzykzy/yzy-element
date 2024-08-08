@@ -1,62 +1,29 @@
-<script setup lang="ts">
-import { type DropdownItemProps } from "yzy-element";
+<script lang="ts" setup>
+import { ErMessage } from "yzy-element";
 
-const items: DropdownItemProps[] = [
-  { command: "1", label: "Action 1" },
-  { command: "2", label: "Action 2" },
-  { command: "3", label: "Action 3", disabled: true },
-  { command: "4", label: "Action 4", divided: true },
-];
+const open1 = () => {
+  ErMessage("This is a message.");
+};
+const open2 = () => {
+  ErMessage({
+    message: "Congrats, this is a success message.",
+    type: "success",
+  });
+};
+const open3 = () => {
+  ErMessage({
+    message: "Warning, this is a warning message.",
+    type: "warning",
+  });
+};
+const open4 = () => {
+  ErMessage.error("Oops, this is a error message.");
+};
 </script>
 
 <template>
-  <div class="row">
-    <div class="col">
-      <div class="desc">disabled</div>
-      <er-dropdown :items="items" disabled>
-        <span class="dropdown-link">
-          Dropdown List
-          <er-icon icon="angle-down" />
-        </span>
-      </er-dropdown>
-    </div>
-    <div class="col">
-      <div class="desc">undisabled</div>
-      <er-dropdown :items="items">
-        <span class="dropdown-link">
-          Dropdown List
-          <er-icon icon="angle-down" />
-        </span>
-      </er-dropdown>
-    </div>
-  </div>
+  <er-button :plain="true" @click="open2">Success</er-button>
+  <er-button :plain="true" @click="open3">Warning</er-button>
+  <er-button :plain="true" @click="open1">Message</er-button>
+  <er-button :plain="true" @click="open4">Error</er-button>
 </template>
-
-<style scoped>
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.col {
-  flex: 1;
-}
-
-.desc {
-  display: block;
-  color: var(--er-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-.dropdown-link {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--er-color-primary);
-
-  i {
-    margin-left: 8px;
-  }
-}
-</style>
