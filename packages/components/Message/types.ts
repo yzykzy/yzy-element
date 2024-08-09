@@ -55,4 +55,4 @@ export interface MessageInstance {
 export type CreateMessageProps = Omit<
   MessageProps,
   "onDestory" | "id" | "zIndex"
->;
+>; 
