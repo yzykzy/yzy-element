@@ -1,29 +1,9 @@
 <script lang="ts" setup>
-import { ErMessage } from "yzy-element";
-
-const open1 = () => {
-  ErMessage("This is a message.");
-};
-const open2 = () => {
-  ErMessage({
-    message: "Congrats, this is a success message.",
-    type: "success",
-  });
-};
-const open3 = () => {
-  ErMessage({
-    message: "Warning, this is a warning message.",
-    type: "warning",
-  });
-};
-const open4 = () => {
-  ErMessage.error("Oops, this is a error message.");
-};
+import { ErSwitch } from 'yzy-element'
+import { ref } from 'vue'
+const switchVal = ref(false)
 </script>
 
 <template>
-  <er-button :plain="true" @click="open2">Success</er-button>
-  <er-button :plain="true" @click="open3">Warning</er-button>
-  <er-button :plain="true" @click="open1">Message</er-button>
-  <er-button :plain="true" @click="open4">Error</er-button>
+  <er-switch v-model="switchVal" activeText="qqqqqqq"></er-switch>
 </template>
